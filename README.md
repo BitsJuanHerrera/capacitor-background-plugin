@@ -14,6 +14,10 @@ npx cap sync
 <docgen-index>
 
 * [`echo(...)`](#echo)
+* [`activate()`](#activate)
+* [`deactivate()`](#deactivate)
+* [`isActive()`](#isactive)
+* [`requestAutoStartPermission()`](#requestautostartpermission)
 
 </docgen-index>
 
@@ -31,6 +35,46 @@ echo(options: { value: string; }) => Promise<{ value: string; }>
 | **`options`** | <code>{ value: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### activate()
+
+```typescript
+activate() => Promise<void>
+```
+
+--------------------
+
+
+### deactivate()
+
+```typescript
+deactivate() => Promise<void>
+```
+
+--------------------
+
+
+### isActive()
+
+```typescript
+isActive() => Promise<{ active: boolean; }>
+```
+
+**Returns:** <code>Promise&lt;{ active: boolean; }&gt;</code>
+
+--------------------
+
+
+### requestAutoStartPermission()
+
+```typescript
+requestAutoStartPermission() => Promise<{ tipo_celular: string; }>
+```
+
+**Returns:** <code>Promise&lt;{ tipo_celular: string; }&gt;</code>
 
 --------------------
 
