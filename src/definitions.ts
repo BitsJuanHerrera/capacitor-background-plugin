@@ -1,7 +1,16 @@
+export interface ISettings {
+  title: string;
+  text: string;
+  icon: string;
+  channelName: string;
+  channelDescription: string;
+  showWhen: boolean;
+}
 export interface BackgroundModePlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
-  activate(): Promise<void>;
-  deactivate(): Promise<void>;
+  enable(): Promise<void>;
+  disable(): Promise<void>;
+  getSettings(): Promise<{ settings: ISettings }>;
+  setSettings(settings: Partial<ISettings>): Promise<void>;
   isActive(): Promise<{ active: boolean }>;
-  requestAutoStartPermission(): Promise<{ tipo_celular: string }>;
+  echo(options: { value: string }): Promise<{ value: string }>;
 }

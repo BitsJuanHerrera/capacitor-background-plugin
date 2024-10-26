@@ -1,28 +1,30 @@
 import { WebPlugin } from '@capacitor/core';
 
-import type { BackgroundModePlugin } from './definitions';
+import type { BackgroundModePlugin, ISettings } from './definitions';
 
 export class BackgroundModeWeb extends WebPlugin implements BackgroundModePlugin {
-  async requestAutoStartPermission(): Promise<{ tipo_celular: string }> {
-    console.log('Activar el AUTOSTART on web (mock)');
-    return { tipo_celular: 'none' };
+  async enable(): Promise<void> {
+    throw this.unimplemented('Not implemented on web.');
   }
 
-  async activate(): Promise<void> {
-    console.log('Background mode activated on web (mock)');
+  async disable(): Promise<void> {
+    throw this.unimplemented('Not implemented on web.');
   }
 
-  async deactivate(): Promise<void> {
-    console.log('Background mode deactivated on web (mock)');
+  async getSettings(): Promise<{ settings: ISettings }> {
+    throw this.unimplemented('Not implemented on web.');
+  }
+
+  async setSettings(_settings: Partial<ISettings>): Promise<void> {
+    throw this.unimplemented('Not implemented on web.');
   }
 
   async isActive(): Promise<{ active: boolean }> {
-    console.log('Checking background mode status on web (mock)');
-    return { active: false };
+    throw this.unimplemented('Not implemented on web.');
   }
 
   async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO 8:05 :>>>> ', options);
+    console.log('ECHO 09:52 :>>>> ', options);
     return options;
   }
 }

@@ -13,16 +13,72 @@ npx cap sync
 
 <docgen-index>
 
-* [`echo(...)`](#echo)
-* [`activate()`](#activate)
-* [`deactivate()`](#deactivate)
+* [`enable()`](#enable)
+* [`disable()`](#disable)
+* [`getSettings()`](#getsettings)
+* [`setSettings(...)`](#setsettings)
 * [`isActive()`](#isactive)
-* [`requestAutoStartPermission()`](#requestautostartpermission)
+* [`echo(...)`](#echo)
+* [Interfaces](#interfaces)
+* [Type Aliases](#type-aliases)
 
 </docgen-index>
 
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
+
+### enable()
+
+```typescript
+enable() => Promise<void>
+```
+
+--------------------
+
+
+### disable()
+
+```typescript
+disable() => Promise<void>
+```
+
+--------------------
+
+
+### getSettings()
+
+```typescript
+getSettings() => Promise<{ settings: ISettings; }>
+```
+
+**Returns:** <code>Promise&lt;{ settings: <a href="#isettings">ISettings</a>; }&gt;</code>
+
+--------------------
+
+
+### setSettings(...)
+
+```typescript
+setSettings(settings: Partial<ISettings>) => Promise<void>
+```
+
+| Param          | Type                                                                                  |
+| -------------- | ------------------------------------------------------------------------------------- |
+| **`settings`** | <code><a href="#partial">Partial</a>&lt;<a href="#isettings">ISettings</a>&gt;</code> |
+
+--------------------
+
+
+### isActive()
+
+```typescript
+isActive() => Promise<{ active: boolean; }>
+```
+
+**Returns:** <code>Promise&lt;{ active: boolean; }&gt;</code>
+
+--------------------
+
 
 ### echo(...)
 
@@ -39,43 +95,28 @@ echo(options: { value: string; }) => Promise<{ value: string; }>
 --------------------
 
 
-### activate()
-
-```typescript
-activate() => Promise<void>
-```
-
---------------------
+### Interfaces
 
 
-### deactivate()
+#### ISettings
 
-```typescript
-deactivate() => Promise<void>
-```
-
---------------------
-
-
-### isActive()
-
-```typescript
-isActive() => Promise<{ active: boolean; }>
-```
-
-**Returns:** <code>Promise&lt;{ active: boolean; }&gt;</code>
-
---------------------
+| Prop                     | Type                 |
+| ------------------------ | -------------------- |
+| **`title`**              | <code>string</code>  |
+| **`text`**               | <code>string</code>  |
+| **`icon`**               | <code>string</code>  |
+| **`channelName`**        | <code>string</code>  |
+| **`channelDescription`** | <code>string</code>  |
+| **`showWhen`**           | <code>boolean</code> |
 
 
-### requestAutoStartPermission()
+### Type Aliases
 
-```typescript
-requestAutoStartPermission() => Promise<{ tipo_celular: string; }>
-```
 
-**Returns:** <code>Promise&lt;{ tipo_celular: string; }&gt;</code>
+#### Partial
 
---------------------
+Make all properties in T optional
+
+<code>{ [P in keyof T]?: T[P]; }</code>
 
 </docgen-api>

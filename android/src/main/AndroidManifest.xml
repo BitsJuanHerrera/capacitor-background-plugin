@@ -17,11 +17,6 @@
             android:exported="false"
             android:permission="android.permission.FOREGROUND_SERVICE">
         </service>
-
-        <meta-data
-            android:name="android.allowBatteryOptimization"
-            android:value="false"
-        />
         
     </application>
 
