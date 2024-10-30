@@ -24,7 +24,7 @@ export class BackgroundModeWeb extends WebPlugin implements BackgroundModePlugin
   }
 
   async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO 09:52 :>>>> ', options);
+    console.log('ECHO 04:35 :>>>> ', options);
     return options;
   }
 }

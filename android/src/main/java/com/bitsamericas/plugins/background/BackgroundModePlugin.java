@@ -5,13 +5,14 @@ import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
-import android.content.ComponentName;
+import android.content.pm.ServiceInfo;
 import android.os.Build;
 import android.os.IBinder;
 import android.os.PowerManager;
@@ -21,7 +22,7 @@ import android.util.Log;
 
 @CapacitorPlugin(name = "BackgroundMode")
 public class BackgroundModePlugin extends Plugin {
-    private BackgroundMode implementation = new BackgroundMode();
+    private final BackgroundMode implementation = new BackgroundMode();
     private boolean isBackgroundActive = false;
 
     // Variables para almacenar los ajustes de la notificación
@@ -79,7 +80,7 @@ public class BackgroundModePlugin extends Plugin {
             notificationIcon = data.getString("icon");
         }
         if (data.has("showWhen")) {
-            showWhen = data.getBool("showWhen");
+            showWhen = Boolean.TRUE.equals(data.getBool("showWhen"));
         }
 
         // Enviar un Intent al servicio para actualizar la notificación
@@ -111,7 +112,9 @@ public class BackgroundModePlugin extends Plugin {
         serviceIntent.putExtra("text", notificationText);
         serviceIntent.putExtra("icon", notificationIcon);
         serviceIntent.putExtra("showWhen", showWhen);
-        getContext().startForegroundService(serviceIntent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            getContext().startForegroundService(serviceIntent);
+        }
         call.resolve();
         Log.i("[BackgroundMode]", "[START] foreground service");
     }
@@ -142,6 +145,7 @@ public class BackgroundModePlugin extends Plugin {
         private String notificationIcon = "ic_launcher";
         private boolean showWhen = true;
 
+        @SuppressLint("WakelockTimeout")
         @Override
         public void onCreate() {
             super.onCreate();
@@ -175,7 +179,7 @@ public class BackgroundModePlugin extends Plugin {
             Log.i("[BackgroundMode]", "[VERSION SDK ANDROID] " + Build.VERSION.SDK_INT);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                startForeground(1, notification, 2);
+                startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK);
             } else {
                 startForeground(1, notification);
             }
@@ -242,7 +246,7 @@ public class BackgroundModePlugin extends Plugin {
             try {
                 return Class.forName(getApplicationContext().getPackageName() + ".MainActivity");
             } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+                Log.e("[BackgroundMode]", "No se pudo encontrar la clase MainActivity", e);
                 return null;
             }
         }
