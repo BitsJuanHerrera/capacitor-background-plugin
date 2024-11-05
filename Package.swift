@@ -2,11 +2,11 @@
 import PackageDescription
 
 let package = Package(
-    name: "BitsamericasCapacitorPluginBackground",
+    name: "JuankmilohCapacitorPluginBackground",
     platforms: [.iOS(.v13)],
     products: [
         .library(
-            name: "BitsamericasCapacitorPluginBackground",
+            name: "JuankmilohCapacitorPluginBackground",
             targets: ["BackgroundModePlugin"])
     ],
     dependencies: [

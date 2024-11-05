@@ -1,4 +1,4 @@
-package com.bitsamericas.plugins.background;
+package com.juankmiloh.plugins.background;
 
 import android.util.Log;
 

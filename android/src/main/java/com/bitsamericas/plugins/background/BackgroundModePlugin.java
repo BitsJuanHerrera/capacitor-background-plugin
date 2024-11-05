@@ -1,4 +1,4 @@
-package com.bitsamericas.plugins.background;
+package com.juankmiloh.plugins.background;
 
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;

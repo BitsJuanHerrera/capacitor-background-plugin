@@ -1,6 +1,6 @@
 {
   "name": "@juankmiloh/capacitor-plugin-background",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Este plugin de Capacitor permite la ejecución de tareas en segundo plano en aplicaciones móviles, facilitando la integración de servicios nativos que funcionan incluso cuando la aplicación no está en primer plano. Incluye características como la gestión de notificaciones personalizadas, el control del estado de la aplicación y la optimización del rendimiento de fondo, todo con una configuración sencilla y flexible.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -13,7 +13,7 @@
     "ios/Sources",
     "ios/Tests",
     "Package.swift",
-    "BitsamericasCapacitorPluginBackground.podspec"
+    "JuankmilohCapacitorPluginBackground.podspec"
   ],
   "author": "Juan Camilo Herrera",
   "license": "MIT",
@@ -31,7 +31,7 @@
   ],
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
-    "verify:ios": "xcodebuild -scheme BitsamericasCapacitorPluginBackground -destination generic/platform=iOS",
+    "verify:ios": "xcodebuild -scheme JuankmilohCapacitorPluginBackground -destination generic/platform=iOS",
     "verify:android": "cd android && ./gradlew clean build test && cd ..",
     "verify:web": "npm run build",
     "lint": "npm run eslint && npm run prettier -- --check && npm run swiftlint -- lint",
