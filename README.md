@@ -1,11 +1,12 @@
-# bitsamericas-capacitor-plugin-background
+# capacitor-plugin-background
 
 Este plugin de Capacitor permite la ejecución de tareas en segundo plano en aplicaciones móviles, facilitando la integración de servicios nativos que funcionan incluso cuando la aplicación no está en primer plano. Incluye características como la gestión de notificaciones personalizadas, el control del estado de la aplicación y la optimización del rendimiento de fondo, todo con una configuración sencilla y flexible.
 
 ## Install
 
 ```bash
-npm install bitsamericas-capacitor-plugin-background
+npm install @juankmiloh/capacitor-plugin-background
+yarn add @juankmiloh/capacitor-plugin-background
 npx cap sync
 ```
 
