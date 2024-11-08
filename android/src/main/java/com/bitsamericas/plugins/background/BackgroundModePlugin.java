@@ -15,7 +15,6 @@ import android.content.Intent;
 import android.content.pm.ServiceInfo;
 import android.os.Build;
 import android.os.IBinder;
-import android.os.PowerManager;
 import android.content.Context;
 import androidx.core.app.NotificationCompat;
 import android.util.Log;
@@ -27,7 +26,7 @@ public class BackgroundModePlugin extends Plugin {
 
     // Variables para almacenar los ajustes de la notificación
     private String notificationTitle = "Audio Service";
-    private String notificationText = "Reproduciendo audio en segundo plano";
+    private String notificationText = "Reproducción de audio en segundo plano";
     private String notificationIcon = "ic_launcher"; // Nombre del icono por defecto
     private boolean showWhen = true;
 
@@ -138,25 +137,16 @@ public class BackgroundModePlugin extends Plugin {
 
     public static class AudioService extends Service {
         private static final String CHANNEL_ID = "ForegroundAudioServiceChannel";
-        private PowerManager.WakeLock wakeLock;
 
         private String notificationTitle = "Audio Service";
-        private String notificationText = "Reproduciendo audio en segundo plano";
+        private String notificationText = "Reproducción de audio en segundo plano";
         private String notificationIcon = "ic_launcher";
         private boolean showWhen = true;
 
-        @SuppressLint("WakelockTimeout")
         @Override
         public void onCreate() {
             super.onCreate();
             createNotificationChannel();
-
-            // Adquirir el WakeLock
-            PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
-            if (powerManager != null) {
-                wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MyApp::AudioWakeLock");
-                wakeLock.acquire();
-            }
         }
 
         @Override
@@ -196,14 +186,9 @@ public class BackgroundModePlugin extends Plugin {
         public void onDestroy() {
             super.onDestroy();
 
-            // Liberar el WakeLock
-            if (wakeLock != null && wakeLock.isHeld()) {
-                wakeLock.release();
-            }
-
             // Detener el servicio en primer plano y eliminar la notificación
             stopForeground(true);
-            Log.i("[BackgroundMode]", "[onDestroy] End Service " + wakeLock);
+            Log.i("[BackgroundMode]", "[onDestroy] End Service");
         }
 
         private void createNotificationChannel() {
