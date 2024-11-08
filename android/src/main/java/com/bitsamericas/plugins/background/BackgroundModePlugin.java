@@ -1,5 +1,6 @@
 package com.juankmiloh.plugins.background;
 
+import android.Manifest;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
@@ -12,10 +13,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.pm.ServiceInfo;
 import android.os.Build;
 import android.os.IBinder;
 import android.content.Context;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.app.NotificationCompat;
 import android.util.Log;
 
@@ -37,6 +41,27 @@ public class BackgroundModePlugin extends Plugin {
         JSObject ret = new JSObject();
         ret.put("value", implementation.echo(value));
         call.resolve(ret);
+    }
+
+    // Metodo para solicitar permiso para activar notificaciones
+    @PluginMethod
+    public void requestNotificationPermission(PluginCall call) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) { // Android 13+
+            if (ContextCompat.checkSelfPermission(getContext(),
+                    Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                        getActivity(),
+                        new String[] { Manifest.permission.POST_NOTIFICATIONS },
+                        1);
+            } else {
+                // El permiso ya fue otorgado
+                Log.i("[BackgroundMode]", "[PERMISSION] Notification Granted");
+                call.resolve();
+            }
+        } else {
+            // El permiso no es necesario para versiones anteriores
+            call.resolve();
+        }
     }
 
     // Método para activar el modo en segundo plano

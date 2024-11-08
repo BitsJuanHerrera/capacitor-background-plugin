@@ -3,6 +3,10 @@ import { WebPlugin } from '@capacitor/core';
 import type { BackgroundModePlugin, ISettings } from './definitions';
 
 export class BackgroundModeWeb extends WebPlugin implements BackgroundModePlugin {
+  requestNotificationPermission(): Promise<void> {
+    throw this.unimplemented('Not implemented on web.');
+  }
+
   async enable(): Promise<void> {
     throw this.unimplemented('Not implemented on web.');
   }
@@ -24,7 +28,7 @@ export class BackgroundModeWeb extends WebPlugin implements BackgroundModePlugin
   }
 
   async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO 05 nov :>>>> ', options);
+    console.log('ECHO 07 nov :>>>> ', options);
     return options;
   }
 }

@@ -1,6 +1,6 @@
 # capacitor-plugin-background
 
-Este plugin de Capacitor permite la ejecución de tareas en segundo plano en aplicaciones móviles, facilitando la integración de servicios nativos que funcionan incluso cuando la aplicación no está en primer plano. Incluye características como la gestión de notificaciones personalizadas, el control del estado de la aplicación y la optimización del rendimiento de fondo, todo con una configuración sencilla y flexible.
+Este plugin de Capacitor permite la ejecución de tareas de **AUDIO** en segundo plano en aplicaciones móviles **ANDROID**, facilitando la integración de servicios nativos que funcionan incluso cuando la aplicación no está en primer plano. Incluye características como la gestión de notificaciones personalizadas, el control del estado de la aplicación y la optimización del rendimiento de fondo, todo con una configuración sencilla y flexible.
 
 ## Install
 
@@ -14,6 +14,7 @@ npx cap sync
 
 <docgen-index>
 
+* [`requestNotificationPermission()`](#requestnotificationpermission)
 * [`enable()`](#enable)
 * [`disable()`](#disable)
 * [`getSettings()`](#getsettings)
@@ -27,6 +28,15 @@ npx cap sync
 
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
+
+### requestNotificationPermission()
+
+```typescript
+requestNotificationPermission() => Promise<void>
+```
+
+--------------------
+
 
 ### enable()
 

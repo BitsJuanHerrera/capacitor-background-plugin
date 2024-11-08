@@ -7,6 +7,7 @@ export interface ISettings {
   showWhen: boolean;
 }
 export interface BackgroundModePlugin {
+  requestNotificationPermission(): Promise<void>;
   enable(): Promise<void>;
   disable(): Promise<void>;
   getSettings(): Promise<{ settings: ISettings }>;
