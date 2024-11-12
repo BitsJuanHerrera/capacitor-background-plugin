@@ -1,6 +1,6 @@
 {
   "name": "@juankmiloh/capacitor-plugin-background",
-  "version": "0.0.7",
+  "version": "0.1.7",
   "description": "Este plugin de Capacitor permite la ejecución de tareas en segundo plano en aplicaciones móviles, facilitando la integración de servicios nativos que funcionan incluso cuando la aplicación no está en primer plano. Incluye características como la gestión de notificaciones personalizadas, el control del estado de la aplicación y la optimización del rendimiento de fondo, todo con una configuración sencilla y flexible.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",

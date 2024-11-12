@@ -1,6 +1,6 @@
 # capacitor-plugin-background
 
-Este plugin de Capacitor permite la ejecución de tareas de **AUDIO** en segundo plano en aplicaciones móviles **ANDROID**, facilitando la integración de servicios nativos que funcionan incluso cuando la aplicación no está en primer plano. Incluye características como la gestión de notificaciones personalizadas, el control del estado de la aplicación y la optimización del rendimiento de fondo, todo con una configuración sencilla y flexible.
+Este plugin de Capacitor permite la ejecución de tareas de **AUDIO** en segundo plano en aplicaciones móviles **ANDROID** (Versión API34), facilitando la integración de servicios nativos que funcionan incluso cuando la aplicación no está en primer plano. Incluye características como la gestión de notificaciones personalizadas, el control del estado de la aplicación y la optimización del rendimiento de fondo, todo con una configuración sencilla y flexible.
 
 ## Install
 
@@ -8,6 +8,15 @@ Este plugin de Capacitor permite la ejecución de tareas de **AUDIO** en segundo
 npm install @juankmiloh/capacitor-plugin-background
 yarn add @juankmiloh/capacitor-plugin-background
 npx cap sync
+```
+
+## Publicar plugin
+
+```bash
+# 1. npm login
+# 2. Cambiar version de plugin en el package para publicar en npm
+# 3. npm run build
+# 4. npm publish --access public
 ```
 
 ## API
